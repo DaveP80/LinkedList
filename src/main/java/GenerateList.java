@@ -1,50 +1,47 @@
-
 import java.util.ArrayList;
 import java.util.List;
-
 public class GenerateList {
 
-    static Node head;
-
+    static Node head; // head of list
     static class Node {
-
         int data;
         Node next;
-
         Node(int d)
         {
             data = d;
             next = null;
         }
     }
-
-    /* Function to reverse the linked list */
-    Node reverse(Node node)
+    static Node reverse(Node head)
     {
-        Node prev = null;
-        Node current = node;
-        Node next = null;
-        while (current != null) {
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
-        }
-        node = prev;
-        return node;
+        if (head == null || head.next == null)
+            return head;
+
+        /* reverse the rest list and put
+        the first element at the end */
+        Node rest = reverse(head.next);
+        head.next.next = head;
+
+        head.next = null;
+
+        return rest;
     }
-
-    // prints content of double linked list
-    void printList(Node node)
+    /* Function to print linked list */
+    static void print()
     {
-        while (node != null) {
-            System.out.print(node.data + " ");
-            node = node.next;
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
         }
     }
-
+    static void push(int data)
+    {
+        Node temp = new Node(data);
+        temp.next = head;
+        head = temp;
+    }
     public static List<Integer> generated = new ArrayList<>();
-
     public static void makeList() {
         int i;
         for (i = 0; i < 19; i++) {
@@ -52,7 +49,5 @@ public class GenerateList {
             generated.add((int)Math.floor(Math.random() * 80));
 
         }
-
     }
-
 }

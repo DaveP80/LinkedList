@@ -6,7 +6,6 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import util.MongoUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,6 @@ public class ListDao {
     MongoCollection<Document> collection = database.getCollection("list");
 
     public void insertList(List<Integer> list, List<Integer> list2, List<Integer> list3) throws InterruptedException {
-
 
         Document document = new Document("Initial Random ints", list);
         document.put("reversed", list2);

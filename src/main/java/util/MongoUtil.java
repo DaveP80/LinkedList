@@ -3,7 +3,6 @@ package util;
 import com.mongodb.client.*;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-
 public class MongoUtil {
 
     private static MongoClient mClient;
@@ -15,7 +14,6 @@ public class MongoUtil {
         }
         return mClient;
     }
-
     // Utility method to get database instance
     public MongoDatabase getDB() {
         return getMongoClient().getDatabase("linkedlist");

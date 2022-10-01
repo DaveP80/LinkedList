@@ -1,4 +1,5 @@
 import dao.ListDao;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -11,21 +12,18 @@ public class LinkedList extends GenerateList {
 
         ListDao listDao = new ListDao();
 
-
         while (true) {
 
             makeList();
+            head = null;
             System.out.println("Array of Random Ints");
 
-            if (generated.size()>19) {
+            if (generated.size() > 19) {
                 System.out.println("input valid integers");
                 generated.clear();
                 makeList();
             }
             System.out.println(generated);
-
-//        Stream<Integer> sortedStream = generated.stream().sorted();
-//        sortedStream.forEach((n) -> System.out.print(n + " "));
 
             System.out.println("Input a desired list size between 7 and 19");
 
@@ -46,10 +44,22 @@ public class LinkedList extends GenerateList {
                 System.out.println("\n" + "custom linked list");
                 System.out.println(linkedList);
                 System.out.println("reversing list...");
+
+                for (i = input - 1; i >= 0; i--) {
+
+                    push(linkedList.get(i));
+
+                }
+
+                head = reverse(head);
+                System.out.println("old method for reversing linked list");
+                print();
+
                 Collections.reverse(linkedList);
 
                 List<Integer> linkedList2 = new java.util.LinkedList<>(linkedList);
 
+                System.out.println("\n");
                 System.out.println("input an index to insert a random int value " + "(0-" + input + ").");
 
                 while (!scan.hasNextInt()) {
@@ -63,16 +73,18 @@ public class LinkedList extends GenerateList {
                     //insert random value at specific index
                     linkedList2.add(input2, ((int) Math.floor(Math.random() * 80)));
 
-                    //add another random int
                     System.out.println("\n" + "new value at index " + input2);
 
                     listDao.insertList(generated, linkedList, linkedList2);
+
+//                    Stream<Integer> sortedStream = linkedList2.stream().sorted();
+//                    sortedStream.forEach((n) -> System.out.print(n + " "));
 
                 }
 
                 if (linkedList2.size() > linkedList.size()) {
 
-                    System.out.println("would you like to clear the collection?, yes(1)");
+                    System.out.println("\n" + "\n" + "would you like to clear the collection?, yes(1)");
                     while (!scan.hasNextInt()) {
                         scan.nextLine();
                     }
@@ -80,7 +92,6 @@ public class LinkedList extends GenerateList {
                     int input3 = scan.nextInt();
 
                     if (input3 == 1) {
-
                         listDao.delete();
                         generated.clear();
 
