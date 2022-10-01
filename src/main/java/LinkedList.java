@@ -23,16 +23,16 @@ public class LinkedList extends GenerateList{
         }
         System.out.println(linkedList);
         Collections.reverse(linkedList);
-        System.out.println(linkedList);
+        List<Integer> linkedList2 = new java.util.LinkedList<>(linkedList);
 
         //insert random value at specific index
-        linkedList.add(4, ((int)Math.floor(Math.random() * 80)));
+        linkedList2.add(4, ((int)Math.floor(Math.random() * 80)));
 
-        System.out.println(linkedList);
+        System.out.println(linkedList2);
 
         //add another random int
 
-        listDao.insertList(linkedList);
+        listDao.insertList(linkedList2);
 
 
 

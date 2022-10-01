@@ -14,9 +14,9 @@ public class ListDao {
     MongoDatabase database = mongoUtil.getDB();
     MongoCollection<Document> collection = database.getCollection("list");
 
-    public void insertList(List<Integer> generated) throws InterruptedException {
+    public void insertList(List<Integer> list, List<Integer> list2, List<Integer> list3) throws InterruptedException {
 
-        Document document = new Document("reverse", generated);
+        Document document = new Document("reverse", list);
         mongoUtil.getUserCollection().insertOne(document);
         MongoCursor<Document> cur = collection.find().skip((int) collection.countDocuments()-1).iterator();
         while (cur.hasNext()) {
