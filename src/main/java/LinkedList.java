@@ -5,7 +5,6 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class LinkedList extends GenerateList {
-
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) throws InterruptedException {
